@@ -13,7 +13,8 @@ public class RetailLineItem implements LineItem{
     // Declare LineItem variables
     private double quantity;
     private Product product;
-    private static SimpleDiscountFactory factory = new SimpleDiscountFactory();
+    private static SimpleDiscountFactory factory = 
+                   SimpleDiscountFactory.getInstance();
     
     public RetailLineItem(String productID, double quantity){
         this.quantity = quantity;
@@ -23,8 +24,10 @@ public class RetailLineItem implements LineItem{
     // Build a fake product database
     
     public static Product[] productDatabase = {
-        new Product("C112234", "Carhartt duck jacket", 29.99, factory.createDiscount(1)),
-        new Product("H334456", "2 inch mending plate", .29, factory.createDiscount(1)),
+        new Product("C112234", "Carhartt duck jacket", 29.99, 
+                    factory.createDiscount(1)),
+        new Product("H334456", "2 inch mending plate", .29, 
+                    factory.createDiscount(1)),
         new Product("H334478", "3 inch stainless deck screws", 5.89, 
                     factory.createDiscount(2)),
         new Product("L778812", "Rainmaster 50' garden hose", 24.99, 

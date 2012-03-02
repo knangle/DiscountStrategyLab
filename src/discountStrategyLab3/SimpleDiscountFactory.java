@@ -10,6 +10,19 @@ package discountStrategyLab3;
  */
 public class SimpleDiscountFactory {
     
+    private static SimpleDiscountFactory instance;
+    
+    private SimpleDiscountFactory(){
+    }
+    
+    public static SimpleDiscountFactory getInstance(){
+        
+        if(instance == null){
+            instance = new SimpleDiscountFactory();
+        }
+    return instance;
+    }
+    
     public DiscountStrategy createDiscount(int selectDiscount){
         DiscountStrategy discount = null;
         
