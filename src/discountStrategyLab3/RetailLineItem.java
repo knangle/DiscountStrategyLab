@@ -21,14 +21,14 @@ public class RetailLineItem implements LineItem{
     // Build a fake product database
     
     public static Product[] productDatabase = {
-        new Product("C112234", "Carhartt duck jacket", 29.99, new NoDiscount()),
-        new Product("H334456", "2 inch mending plate", .29, new NoDiscount()),
+        new Product("C112234", "Carhartt duck jacket", 29.99, SimpleDiscountFactory.createDiscount(1)),
+        new Product("H334456", "2 inch mending plate", .29, SimpleDiscountFactory.createDiscount(1)),
         new Product("H334478", "3 inch stainless deck screws", 5.89, 
-                    new BuyOneGetOneDiscount()),
+                    SimpleDiscountFactory.createDiscount(2)),
         new Product("L778812", "Rainmaster 50' garden hose", 24.99, 
-                    new BuyOneGetOneDiscount()),
+                    SimpleDiscountFactory.createDiscount(2)),
         new Product("T665575", "Stanley #2 phillips screwdriver", 4.49, 
-                    new SpringProjectsDiscount())};
+                    SimpleDiscountFactory.createDiscount(3))};
     
     // Select the product from the database
     private Product findProduct(String productID){
