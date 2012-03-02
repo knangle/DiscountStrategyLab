@@ -10,7 +10,7 @@ package discountStrategyLab3;
  */
 public class SimpleDiscountFactory {
     
-    public static DiscountStrategy createDiscount(int selectDiscount){
+    public DiscountStrategy createDiscount(int selectDiscount){
         DiscountStrategy discount = null;
         
         switch (selectDiscount){

@@ -13,12 +13,12 @@ public class RetailLineItem implements LineItem{
     // Declare LineItem variables
     private double quantity;
     private Product product;
-    private static SimpleDiscountFactory factory = null;
+    private static SimpleDiscountFactory factory = new SimpleDiscountFactory();
     
     public RetailLineItem(String productID, double quantity){
         this.quantity = quantity;
         this.product = findProduct(productID);
-        this.factory = new SimpleDiscountFactory();
+        
     }    
     // Build a fake product database
     
