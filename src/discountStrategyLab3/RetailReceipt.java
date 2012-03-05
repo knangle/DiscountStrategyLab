@@ -16,6 +16,8 @@ public class RetailReceipt implements Receipt{
     private LineItem item;
     private double totalSale = 0;
     
+    
+    
     public RetailReceipt(){}
     
     public void beginSale(String custNo){
@@ -24,13 +26,21 @@ public class RetailReceipt implements Receipt{
             customer.buildCustomer(custNo);
     }
     
-    // Declare array list to store line items
-    private ArrayList<LineItem> newReceipt = new ArrayList<LineItem>();
+    // Declare an array to store line items
 
+    private LineItem[] newReceipt = new RetailLineItem[1];
+    
     public void addItem(String productID, double qty){
+        int counter;
         RetailLineItem item = new RetailLineItem(productID, qty);
         this.item = item;
-        newReceipt.add(item); 
+        LineItem[] itemArrayCopy = new RetailLineItem[newReceipt.length + 1];
+        
+        for (counter=0; counter < newReceipt.length; counter++)
+            itemArrayCopy[counter] = newReceipt[counter];
+        itemArrayCopy[counter] = item;
+        newReceipt = itemArrayCopy;
+        
     }
     public void printReceipt(){
         // Print receipt header
@@ -51,8 +61,10 @@ public class RetailReceipt implements Receipt{
                 + "---------------------------------------");
         
         // Print receipt line items
-        for (int x = 0; x < newReceipt.size(); x++){
-            LineItem item = (LineItem)newReceipt.get(x);
+        //for (int x = 1; x < newReceipt.size(); x++){
+        for (int x = 1; x < newReceipt.length; x++){
+            //LineItem item = (LineItem)newReceipt.get(x);
+            LineItem item = (LineItem)newReceipt[x];
             System.out.printf("%-9s %-33s %5.0f %9.2f %12.2f %10.2f\n",
                      item.getProductID(), item.getDescription(),
                      item.getQuantity(),item.getUnitPrice(),
